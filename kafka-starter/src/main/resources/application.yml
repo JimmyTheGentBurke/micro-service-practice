@@ -1,0 +1,48 @@
+spring:
+  #  Настройка продюсера в кафка смотреть в папке resources/FAQ.txt
+  kafka:
+    admin:
+      properties:
+        #3
+        default.replication.factor: 3
+        #4
+        num.partitions: 3
+    producer:
+      #18 работает только при acks=all
+      enable.idempotence: true
+      #9
+      max-in-flight-requests-per-connection: 5
+      #8
+      retry-backoff-ms: 1000
+      #7
+      linger-ms: 1000
+      #6
+      max-request-bytes: 1048576
+      #5
+      batch-size: 16384
+      #2
+      acks: all
+      properties:
+        # 1
+        min.insync.replicas: 1
+        #5
+        unclean.leader.election.enable: false
+    consumer:
+      properties:
+        #16
+        partition.assignment.strategy: range
+        #17
+        #partition.assignment.strategy: roundrobin
+      #10
+      fetch-min-bytes: 1024
+      #11
+      fetch-max-wait-ms: 500
+      #12
+      auto-offset-reset: earliest
+      #13
+      #auto-offset-reset: latest
+      #14
+      enable-auto-commit: true
+      #15
+      auto-commit-interval-ms: 5000
+

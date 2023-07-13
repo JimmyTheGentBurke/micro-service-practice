@@ -1,0 +1,33 @@
+server:
+  port: 0
+spring:
+  application:
+    name: data-storage
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/micro_service"
+    username: postgres
+    password: 9815695
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.value}
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URI:http://localhost:8081/eureka}
+logging:
+  pattern:
+#    console: "%C{1.} [%-5level] %d{HH:mm:ss} - %msg%n"
+
+app:
+  common:
+    kafka:
+      bootstrapServers: localhost:29092
+      consumerGroupId: ConsumerTest
+      topic: testTopic8
+    cache:
+      host: localhost
+      port: 6379
+

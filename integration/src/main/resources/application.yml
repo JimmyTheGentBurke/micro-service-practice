@@ -1,0 +1,37 @@
+server:
+  port: 0
+spring:
+  kafka:
+    admin:
+      properties:
+        #3
+        default.replication.factor: 3
+  application:
+    name: integration
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.value}
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URI:http://localhost:8081/eureka}
+logging:
+  pattern:
+    console: "%C{1.} [%-5level] %d{HH:mm:ss} - %msg%n"
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+coin-market-cap:
+  api-key: eb1bdee2-b00d-42d8-8360-3a4b63a78b19
+  accept-header: application/json
+app:
+  common:
+    kafka:
+      bootstrapServers: localhost:29092
+      producerName: newProducer8
+      topic: testTopic8
+
+
