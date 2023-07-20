@@ -24,9 +24,14 @@ logging:
 app:
   common:
     kafka:
-      bootstrapServers: localhost:29092
+      bootstrapServers:
+        - localhost:29092
+        - localhost:39092
+        - localhost:49092
+      producerName: test
       consumerGroupId: ConsumerTest
-      topic: testTopic8
+      topic: test
+      transactionId: test
     cache:
       host: localhost
       port: 6379

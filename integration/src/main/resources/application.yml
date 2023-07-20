@@ -30,8 +30,14 @@ coin-market-cap:
 app:
   common:
     kafka:
-      bootstrapServers: localhost:29092
-      producerName: newProducer8
-      topic: testTopic8
+      bootstrapServers:
+        - localhost:29092
+        - localhost:39092
+        - localhost:49092
+      producerName: test
+      consumerGroupId: ConsumerTest
+      topic: test
+      transactionId: test
+
 
 
